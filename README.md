@@ -1,10 +1,14 @@
 # svg
 
 > A Vue.js project
+
+##参考
+
 项目依据https://juejin.im/post/59bb864b5188257e7a427c09    
 参考资料 张鑫旭大大的文章--[未来必热：SVG Sprite技术介绍](http://www.zhangxinxu.com/wordpress/2014/07/introduce-svg-sprite-technology/?spm=a313x.7781069.1998910419.50)    
 还是张鑫旭大大的文章--[SVG精简压缩工具svgo简介](http://www.zhangxinxu.com/wordpress/2016/02/svg-compress-tool-svgo-experience/)    
-以及[svgo官方文档](http://npm.taobao.org/package/svgo)    
+以及[svgo官方文档](http://npm.taobao.org/package/svgo)
+
 </br>
 
 ##图标使用    
@@ -22,7 +26,8 @@
   symbol的第一种适量方式肯定是引入iconfont的js文件，然后根据类名去使用图标，步骤在上面有，我只想说一下这种方式我遇到的麻烦的地方    
   就是每次图标在增删改的时候，js文件的hash都会改变，这就导致每次增删改操作你都要去操作，其实真的挺麻烦的，尤其是多人开发的时候，你根本不知道什么时候文件名就改了，这样多人本地开发就很不方便了     
   今天所用的方式是将图标存储到本地，直接import使用，这种方式也有不好的地方，就是每个图标都要下载才能使用，我这种懒人是不愿意去寻找图标，下载图标的；    
-  但是好处也有，就是避免了多人协作开发的矛盾，也只有这种方式，才存在今天的svg优化，第一种方式的化，我现在是没有发现什么优化方式的，日后发现了，再补充     
+  但是好处也有，就是避免了多人协作开发的矛盾，也只有这种方式，才存在今天的svg优化，第一种方式的化，我现在是没有发现什么优化方式的，日后发现了，再补充
+  
 </br>
 
 ##优化来了      
@@ -35,7 +40,7 @@
       limit: 10000,
       name: utils.assetsPath('img/[name].[hash:7].[ext]')
     }
-    </br> 
+    </br>
   现在我们要使用svg-sprite-loader:    
   肯定要先下载咯： `npm install svg-sprite-loader -d-s`    
     {
@@ -56,9 +61,12 @@
       }
     }
     </br>
-  其实主要就是应webpack的exclude 和include让url-loader不处理icon图标存放的目录而是让svg-sprite-loader来处理对应目录下的svg，因为你无法保证所以svg都是图标    
+    
+  其实主要就是应webpack的exclude 和include让url-loader不处理icon图标存放的目录而是让svg-sprite-loader来处理对应目录下的svg，因为你无法保证所以svg都是图标
+
   </br>
   然后就是压缩优化了svgo    
+
   其实很像一个压缩工具，但是这个工作真的很强大，我看了一下，demo中压缩最高的将近50%，很夸张，步骤就不细说了，写这个很费脑力，而且还有项目要写，步骤请参考[svgo官方文](http://npm.taobao.org/package/svgo)
 
 
