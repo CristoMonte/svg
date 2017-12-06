@@ -1,28 +1,28 @@
 # svg
 
 > A Vue.js project
-项目依据https://juejin.im/post/59bb864b5188257e7a427c09
-参考资料 张鑫旭大大的文章--[未来必热：SVG Sprite技术介绍](http://www.zhangxinxu.com/wordpress/2014/07/introduce-svg-sprite-technology/?spm=a313x.7781069.1998910419.50)
-还是张鑫旭大大的文章--[SVG精简压缩工具svgo简介](http://www.zhangxinxu.com/wordpress/2016/02/svg-compress-tool-svgo-experience/)
-以及[svgo官方文档](http://npm.taobao.org/package/svgo)
+项目依据https://juejin.im/post/59bb864b5188257e7a427c09    
+参考资料 张鑫旭大大的文章--[未来必热：SVG Sprite技术介绍](http://www.zhangxinxu.com/wordpress/2014/07/introduce-svg-sprite-technology/?spm=a313x.7781069.1998910419.50)    
+还是张鑫旭大大的文章--[SVG精简压缩工具svgo简介](http://www.zhangxinxu.com/wordpress/2016/02/svg-compress-tool-svgo-experience/)    
+以及[svgo官方文档](http://npm.taobao.org/package/svgo)    
 ####图标使用
   [阿里爸爸的矢量图标库](http://www.iconfont.cn/)提供了unicode,font-class,symbol三种使用方式，初次使用的时候，我是一个一个下载到本地，并且是png格式的，简直就是血泪史
-  不说了，不说了，如果项目使用的icon比较多的话，建议在iconfont网站上建立一个自己的project，然后在项目中引入这个project就好了，[具体操作步骤](http://www.iconfont.cn/help/detail?spm=a313x.7781069.1998910419.d8cf4382a&helptype=code)
+  不说了，不说了，如果项目使用的icon比较多的话，建议在iconfont网站上建立一个自己的project，然后在项目中引入这个project就好了，[具体操作步骤](http://www.iconfont.cn/help/detail?spm=a313x.7781069.1998910419.d8cf4382a&helptype=code)     
   刚开始用png的时候真的是难受的，图片在手机适配的时候经常是模糊不清的，自从用了svg后，妈妈再也不用担心适配了，毕竟是矢量图标，一般情况下的放大和缩小是丝毫不会影响图标质量的，好了，废话说完了，主要是吐槽一下之前使用图标的老土方式
 ####正经开始
   symbol的第一种适量方式肯定是引入iconfont的js文件，然后根据类名去使用图标，步骤在上面有，我只想说一下这种方式我遇到的麻烦的地方，
-  就是每次图标在增删改的时候，js文件的hash都会改变，这就导致每次增删改操作你都要去操作，其实真的挺麻烦的，尤其是多人开发的时候，你根本不知道什么时候文件名就改了，这样多人本地开发就很不方便了
+  就是每次图标在增删改的时候，js文件的hash都会改变，这就导致每次增删改操作你都要去操作，其实真的挺麻烦的，尤其是多人开发的时候，你根本不知道什么时候文件名就改了，这样多人本地开发就很不方便了     
   今天所用的方式是将图标存储到本地，直接import使用，这种方式也有不好的地方，就是每个图标都要下载才能使用，我这种懒人是不愿意去寻找图标，下载图标的；
-  但是好处也有，就是避免了多人协作开发的矛盾，也只有这种方式，才存在今天的svg优化，第一种方式的化，我现在是没有发现什么优化方式的，日后发现了，再补充
+  但是好处也有，就是避免了多人协作开发的矛盾，也只有这种方式，才存在今天的svg优化，第一种方式的化，我现在是没有发现什么优化方式的，日后发现了，再补充     
 #####优化来了
-  神器就是这个东西svg-sprite-loader
-  webpack是默认用url-loader来处理svg的
-    test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+  神器就是这个东西svg-sprite-loader     
+  webpack是默认用url-loader来处理svg的     
+    `test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
     loader: 'url-loader',
     options: {
       limit: 10000,
       name: utils.assetsPath('img/[name].[hash:7].[ext]')
-    }
+    }`
   现在我们要使用svg-sprite-loader:
   肯定要先下载咯： `npm install svg-sprite-loader -d-s`
     {
