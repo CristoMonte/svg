@@ -2,7 +2,7 @@
 
 > A Vue.js project
 
-##参考
+参考
 
 项目依据https://juejin.im/post/59bb864b5188257e7a427c09    
 参考资料 张鑫旭大大的文章--[未来必热：SVG Sprite技术介绍](http://www.zhangxinxu.com/wordpress/2014/07/introduce-svg-sprite-technology/?spm=a313x.7781069.1998910419.50)    
@@ -11,7 +11,7 @@
 
 </br>
 
-##图标使用    
+图标使用    
 
   [阿里爸爸的矢量图标库](http://www.iconfont.cn/)
   提供了unicode,font-class,symbol三种使用方式，初次使用的时候，我是一个一个下载到本地，并且是png格式的，简直就是血泪史     
@@ -34,32 +34,32 @@
 
   神器就是这个东西svg-sprite-loader     
   webpack是默认用url-loader来处理svg的     
+  `test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+  loader: 'url-loader',
+  options: {
+    limit: 10000,
+    name: utils.assetsPath('img/[name].[hash:7].[ext]')
+  }`
+    </br>
+  现在我们要使用svg-sprite-loader:    
+  肯定要先下载咯： `npm install svg-sprite-loader -d-s`    
+  `{
+    test: /\.svg$/,
+    loader: 'svg-sprite-loader',
+    include: [resolve('src/icons')],
+    options: {
+      symbolId: '[name]'
+    }
+  },
+  {
     test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
     loader: 'url-loader',
+    exclude: [resolve('src/icons')],
     options: {
       limit: 10000,
       name: utils.assetsPath('img/[name].[hash:7].[ext]')
     }
-    </br>
-  现在我们要使用svg-sprite-loader:    
-  肯定要先下载咯： `npm install svg-sprite-loader -d-s`    
-    {
-      test: /\.svg$/,
-      loader: 'svg-sprite-loader',
-      include: [resolve('src/icons')],
-      options: {
-        symbolId: '[name]'
-      }
-    },
-    {
-      test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-      loader: 'url-loader',
-      exclude: [resolve('src/icons')],
-      options: {
-        limit: 10000,
-        name: utils.assetsPath('img/[name].[hash:7].[ext]')
-      }
-    }
+  }`
     </br>
     
   其实主要就是应webpack的exclude 和include让url-loader不处理icon图标存放的目录而是让svg-sprite-loader来处理对应目录下的svg，因为你无法保证所以svg都是图标
