@@ -2,16 +2,16 @@
 
 > A Vue.js project
 
-参考
+#### 参考
 
-项目依据https://juejin.im/post/59bb864b5188257e7a427c09    
-参考资料 张鑫旭大大的文章--[未来必热：SVG Sprite技术介绍](http://www.zhangxinxu.com/wordpress/2014/07/introduce-svg-sprite-technology/?spm=a313x.7781069.1998910419.50)    
-还是张鑫旭大大的文章--[SVG精简压缩工具svgo简介](http://www.zhangxinxu.com/wordpress/2016/02/svg-compress-tool-svgo-experience/)    
-以及[svgo官方文档](http://npm.taobao.org/package/svgo)
+>项目依据https://juejin.im/post/59bb864b5188257e7a427c09
+>参考资料 张鑫旭大大的文章--[未来必热：SVG Sprite技术介绍](http://www.zhangxinxu.com/wordpress/2014/07/introduce-svg-sprite-technology/?spm=a313x.7781069.1998910419.50)
+>还是张鑫旭大大的文章--[SVG精简压缩工具svgo简介](http://www.zhangxinxu.com/wordpress/2016/02/svg-compress-tool-svgo-experience/)
+>以及[svgo官方文档](http://npm.taobao.org/package/svgo)
 
 </br>
 
-图标使用    
+#### 图标使用
 
   [阿里爸爸的矢量图标库](http://www.iconfont.cn/)
   提供了unicode,font-class,symbol三种使用方式，初次使用的时候，我是一个一个下载到本地，并且是png格式的，简直就是血泪史     
@@ -21,7 +21,7 @@
   好了，废话说完了，主要是吐槽一下之前使用图标的老土方式
 </br>
 
-##正经开始       
+#### 正经开始       
 
   symbol的第一种适量方式肯定是引入iconfont的js文件，然后根据类名去使用图标，步骤在上面有，我只想说一下这种方式我遇到的麻烦的地方    
   就是每次图标在增删改的时候，js文件的hash都会改变，这就导致每次增删改操作你都要去操作，其实真的挺麻烦的，尤其是多人开发的时候，你根本不知道什么时候文件名就改了，这样多人本地开发就很不方便了     
@@ -30,7 +30,7 @@
   
 </br>
 
-##优化来了      
+#### 优化来了      
 
   神器就是这个东西svg-sprite-loader     
   webpack是默认用url-loader来处理svg的     
